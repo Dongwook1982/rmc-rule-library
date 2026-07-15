@@ -1,0 +1,174 @@
+# SHACL Shapes — Material Compliance Rules (MAT-001 to MAT-015)
+# RMC Rule Library | Kim (2026) | ASCE JCCE
+@prefix rmc:  <https://rmc.dl-enc.com/ontology#> .
+@prefix ifc:  <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# MAT-001: Precast girder concrete compressive strength (28-day)
+rmc:MAT-001-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:concreteCompressiveStrengthMPa ;
+        sh:minCount 1 ;
+        sh:minInclusive 40.0 ;
+        sh:severity sh:Violation ;
+        sh:message "MAT-001 FAIL: {$value} does not meet Section5.2.1" ;
+    ] .
+
+# MAT-002: Pier concrete compressive strength (28-day)
+rmc:MAT-002-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcColumn ;
+    sh:property [
+        sh:path rmc:concreteCompressiveStrengthMPa ;
+        sh:minCount 1 ;
+        sh:minInclusive 30.0 ;
+        sh:severity sh:Violation ;
+        sh:message "MAT-002 FAIL: {$value} does not meet Section5.2.2" ;
+    ] .
+
+# MAT-003: Deck slab concrete compressive strength (28-day)
+rmc:MAT-003-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcSlab ;
+    sh:property [
+        sh:path rmc:concreteCompressiveStrengthMPa ;
+        sh:minCount 1 ;
+        sh:minInclusive 27.0 ;
+        sh:severity sh:Warning ;
+        sh:message "MAT-003 FAIL: {$value} does not meet Section5.2.3" ;
+    ] .
+
+# MAT-004: Prestressing strand tensile strength
+rmc:MAT-004-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcTendon ;
+    sh:property [
+        sh:path rmc:tensileStrengthMPa ;
+        sh:minCount 1 ;
+        sh:minInclusive 1860.0 ;
+        sh:severity sh:Violation ;
+        sh:message "MAT-004 FAIL: {$value} does not meet Section5.3.1" ;
+    ] .
+
+# MAT-005: Prestressing force (jacking stress ratio)
+rmc:MAT-005-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcTendon ;
+    sh:property [
+        sh:path rmc:jackingStressRatio ;
+        sh:minCount 1 ;
+        sh:maxInclusive 0.75 ;
+        sh:severity sh:Violation ;
+        sh:message "MAT-005 FAIL: {$value} does not meet Section5.3.2" ;
+    ] .
+
+# MAT-006: Prestressing strand elongation at jacking
+rmc:MAT-006-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcTendon ;
+    sh:property [
+        sh:path rmc:elongationPercent ;
+        sh:minCount 1 ;
+        sh:maxInclusive 2.5 ;
+        sh:severity sh:Warning ;
+        sh:message "MAT-006 FAIL: {$value} does not meet Section5.3.3" ;
+    ] .
+
+# MAT-007: Reinforcing steel yield strength
+rmc:MAT-007-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcReinforcingBar ;
+    sh:property [
+        sh:path rmc:yieldStrengthMPa ;
+        sh:minCount 1 ;
+        sh:minInclusive 400.0 ;
+        sh:severity sh:Violation ;
+        sh:message "MAT-007 FAIL: {$value} does not meet Section5.4.1" ;
+    ] .
+
+# MAT-008: Reinforcing bar minimum cover depth
+rmc:MAT-008-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcReinforcingBar ;
+    sh:property [
+        sh:path rmc:coverDepthMm ;
+        sh:minCount 1 ;
+        sh:minInclusive 40.0 ;
+        sh:severity sh:Violation ;
+        sh:message "MAT-008 FAIL: {$value} does not meet Section5.4.2" ;
+    ] .
+
+# MAT-009: Concrete air-entrainment content (exposure class XF)
+rmc:MAT-009-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:airContentPercent ;
+        sh:minCount 1 ;
+        sh:minInclusive 4.0 ;
+        sh:maxInclusive 7.0 ;
+        sh:severity sh:Warning ;
+        sh:message "MAT-009 FAIL: {$value} does not meet Section5.2.4" ;
+    ] .
+
+# MAT-010: Bearing elastomer hardness (IRHD)
+rmc:MAT-010-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBearing ;
+    sh:property [
+        sh:path rmc:elastomerHardnessIRHD ;
+        sh:minCount 1 ;
+        sh:minInclusive 60.0 ;
+        sh:maxInclusive 70.0 ;
+        sh:severity sh:Warning ;
+        sh:message "MAT-010 FAIL: {$value} does not meet Section5.5.1" ;
+    ] .
+
+# MAT-011: Bearing elastomer shear modulus
+rmc:MAT-011-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBearing ;
+    sh:property [
+        sh:path rmc:shearModulusMPa ;
+        sh:minCount 1 ;
+        sh:minInclusive 0.9 ;
+        sh:maxInclusive 1.2 ;
+        sh:severity sh:Warning ;
+        sh:message "MAT-011 FAIL: {$value} does not meet Section5.5.2" ;
+    ] .
+
+# MAT-012: Expansion joint sealant bond strength
+rmc:MAT-012-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBuildingElementProxy ;
+    sh:property [
+        sh:path rmc:bondStrengthMPa ;
+        sh:minCount 1 ;
+        sh:minInclusive 1.0 ;
+        sh:severity sh:Info ;
+        sh:message "MAT-012 FAIL: {$value} does not meet Section5.6.1" ;
+    ] .
+
+# MAT-013: Waterproofing membrane thickness
+rmc:MAT-013-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcCovering ;
+    sh:property [
+        sh:path rmc:membranethicknessMm ;
+        sh:minCount 1 ;
+        sh:minInclusive 4.0 ;
+        sh:severity sh:Info ;
+        sh:message "MAT-013 FAIL: {$value} does not meet Section5.7.1" ;
+    ] .
+
+# MAT-014: Structural steel yield strength (diaphragm)
+rmc:MAT-014-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcMember ;
+    sh:property [
+        sh:path rmc:steelYieldStrengthMPa ;
+        sh:minCount 1 ;
+        sh:minInclusive 275.0 ;
+        sh:severity sh:Warning ;
+        sh:message "MAT-014 FAIL: {$value} does not meet Section5.8.1" ;
+    ] .
+
+# MAT-015: Grout compressive strength (bearing pad grouting)
+rmc:MAT-015-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBearing ;
+    sh:property [
+        sh:path rmc:groutStrengthMPa ;
+        sh:minCount 1 ;
+        sh:minInclusive 40.0 ;
+        sh:severity sh:Violation ;
+        sh:message "MAT-015 FAIL: {$value} does not meet Section5.5.3" ;
+    ] .

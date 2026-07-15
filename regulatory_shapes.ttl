@@ -1,0 +1,257 @@
+# SHACL Shapes — Regulatory Requirement Rules (REG-001 to REG-025)
+# RMC Rule Library | Kim (2026) | ASCE JCCE
+@prefix rmc:  <https://rmc.dl-enc.com/ontology#> .
+@prefix ifc:  <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# REG-001: IFC model must include IfcProject with GlobalId
+rmc:REG-001-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcProject ;
+    sh:property [
+        sh:path rmc:GlobalId ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-001 FAIL: GlobalId missing or non-compliant (Section4.2)" ;
+    ] .
+
+# REG-002: All bridge elements must have IfcClassification assignment
+rmc:REG-002-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcElement ;
+    sh:property [
+        sh:path rmc:hasClassification ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-002 FAIL: hasClassification missing or non-compliant (Section5.1)" ;
+    ] .
+
+# REG-003: Element Name property must be non-empty
+rmc:REG-003-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcElement ;
+    sh:property [
+        sh:path rmc:Name ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-003 FAIL: Name missing or non-compliant (KDS Section3.1)" ;
+    ] .
+
+# REG-004: Element Description property must be non-empty
+rmc:REG-004-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcElement ;
+    sh:property [
+        sh:path rmc:Description ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-004 FAIL: Description missing or non-compliant (KDS Section3.1)" ;
+    ] .
+
+# REG-005: Installation date (Pset_ManufacturerTypeInformation) must be present
+rmc:REG-005-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcElement ;
+    sh:property [
+        sh:path rmc:installationDate ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-005 FAIL: installationDate missing or non-compliant (Section6.3)" ;
+    ] .
+
+# REG-006: Inspection record reference must be present for PSC girders
+rmc:REG-006-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:inspectionRecordReference ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-006 FAIL: inspectionRecordReference missing or non-compliant (KDS Section7.1)" ;
+    ] .
+
+# REG-007: Material specification (Pset_ConcreteElementGeneral) must reference approved concrete mix
+rmc:REG-007-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:concreteMixReference ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-007 FAIL: concreteMixReference missing or non-compliant (KDS Section5.1)" ;
+    ] .
+
+# REG-008: Prestress record must be linked to each tendon element
+rmc:REG-008-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcTendon ;
+    sh:property [
+        sh:path rmc:prestressRecord ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-008 FAIL: prestressRecord missing or non-compliant (KDS Section5.3.4)" ;
+    ] .
+
+# REG-009: Load test certificate must be present for bearings
+rmc:REG-009-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBearing ;
+    sh:property [
+        sh:path rmc:loadTestCertificate ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-009 FAIL: loadTestCertificate missing or non-compliant (KDS Section5.5.4)" ;
+    ] .
+
+# REG-010: As-built survey date must be within 30 days of TLS acquisition
+rmc:REG-010-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcElement ;
+    sh:property [
+        sh:path rmc:surveyDate ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-010 FAIL: surveyDate missing or non-compliant (Section7.2)" ;
+    ] .
+
+# REG-011: IFC model IfcSite must include GPS coordinates
+rmc:REG-011-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcSite ;
+    sh:property [
+        sh:path rmc:RefLatitude ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-011 FAIL: RefLatitude missing or non-compliant (Section4.3)" ;
+    ] .
+
+# REG-012: Each IfcBeam must be assigned to exactly one IfcBridgePart
+rmc:REG-012-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:containedInBridgePart ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-012 FAIL: containedInBridgePart missing or non-compliant (KDS Section3.2)" ;
+    ] .
+
+# REG-013: Concrete batch test report reference (Pset_ConcreteElementGeneral) must be present
+rmc:REG-013-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:batchTestReportReference ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-013 FAIL: batchTestReportReference missing or non-compliant (KDS Section5.2.5)" ;
+    ] .
+
+# REG-014: Steel certification document reference must be present for reinforcing bars
+rmc:REG-014-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcReinforcingBar ;
+    sh:property [
+        sh:path rmc:steelCertReference ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-014 FAIL: steelCertReference missing or non-compliant (KDS Section5.4.3)" ;
+    ] .
+
+# REG-015: Waterproofing certificate must be linked to deck slab
+rmc:REG-015-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcSlab ;
+    sh:property [
+        sh:path rmc:waterproofingCertificate ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-015 FAIL: waterproofingCertificate missing or non-compliant (KDS Section5.7.2)" ;
+    ] .
+
+# REG-016: Expansion joint product approval document must be present
+rmc:REG-016-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBuildingElementProxy ;
+    sh:property [
+        sh:path rmc:jointApprovalDoc ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-016 FAIL: jointApprovalDoc missing or non-compliant (KDS Section5.6.2)" ;
+    ] .
+
+# REG-017: All IfcElement instances must have a valid OwnerHistory
+rmc:REG-017-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcElement ;
+    sh:property [
+        sh:path rmc:hasOwnerHistory ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-017 FAIL: hasOwnerHistory missing or non-compliant (Section4.4)" ;
+    ] .
+
+# REG-018: MVD compliance: IfcBeam must contain Pset_BeamCommon
+rmc:REG-018-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:hasPset_BeamCommon ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-018 FAIL: hasPset_BeamCommon missing or non-compliant (Section5.2)" ;
+    ] .
+
+# REG-019: MVD compliance: IfcColumn must contain Pset_ColumnCommon
+rmc:REG-019-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcColumn ;
+    sh:property [
+        sh:path rmc:hasPset_ColumnCommon ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-019 FAIL: hasPset_ColumnCommon missing or non-compliant (Section5.2)" ;
+    ] .
+
+# REG-020: MVD compliance: IfcSlab must contain Pset_SlabCommon
+rmc:REG-020-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcSlab ;
+    sh:property [
+        sh:path rmc:hasPset_SlabCommon ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-020 FAIL: hasPset_SlabCommon missing or non-compliant (Section5.2)" ;
+    ] .
+
+# REG-021: Quality control plan reference must be present in IfcProject
+rmc:REG-021-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcProject ;
+    sh:property [
+        sh:path rmc:qualityControlPlanRef ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-021 FAIL: qualityControlPlanRef missing or non-compliant (KDS Section7.2)" ;
+    ] .
+
+# REG-022: Corrective action record must exist for any flagged non-conformance
+rmc:REG-022-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcElement ;
+    sh:property [
+        sh:path rmc:correctiveActionRecord ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-022 FAIL: correctiveActionRecord missing or non-compliant (Section8.1)" ;
+    ] .
+
+# REG-023: Handover package completeness: all mandatory Psets must be populated
+rmc:REG-023-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcElement ;
+    sh:property [
+        sh:path rmc:handoverPackageComplete ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-023 FAIL: handoverPackageComplete missing or non-compliant (Section9.1)" ;
+    ] .
+
+# REG-024: Design revision history must be traceable for structural elements
+rmc:REG-024-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcElement ;
+    sh:property [
+        sh:path rmc:revisionHistory ;
+        sh:minCount 1 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-024 FAIL: revisionHistory missing or non-compliant (Section6.2)" ;
+    ] .
+
+# REG-025: IFC file schema version must be IFC4.3 (ISO 16739-1:2024)
+rmc:REG-025-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcProject ;
+    sh:property [
+        sh:path rmc:ifcSchemaVersion ;
+        sh:minCount 1 ;
+        sh:minInclusive IFC4X3 ;
+        sh:severity sh:Violation ;
+        sh:message "REG-025 FAIL: ifcSchemaVersion missing or non-compliant (Section4.1)" ;
+    ] .

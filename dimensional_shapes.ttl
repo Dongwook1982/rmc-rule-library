@@ -1,0 +1,314 @@
+# SHACL Shapes — Dimensional Tolerance Rules (DIM-001 to DIM-028)
+# RMC Rule Library | Kim (2026) | ASCE JCCE
+@prefix rmc:  <https://rmc.dl-enc.com/ontology#> .
+@prefix ifc:  <https://standards.buildingsmart.org/IFC/DEV/IFC4_3/> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# DIM-001: PSC girder horizontal alignment deviation
+rmc:DIM-001-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:horizontalDeviationMm ;
+        sh:minInclusive -5.0 ;
+        sh:maxInclusive 5.0 ;
+        sh:severity sh:Violation ;
+        sh:message "DIM-001 FAIL: {$value} mm violates Section4.3.2" ;
+    ] .
+
+# DIM-002: PSC girder vertical camber deviation
+rmc:DIM-002-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:verticalCamberMm ;
+        sh:minInclusive -8.0 ;
+        sh:maxInclusive 8.0 ;
+        sh:severity sh:Violation ;
+        sh:message "DIM-002 FAIL: {$value} mm violates Section4.3.3" ;
+    ] .
+
+# DIM-003: Bearing seat level deviation
+rmc:DIM-003-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBearing ;
+    sh:property [
+        sh:path rmc:seatLevelDeviationMm ;
+        sh:minInclusive -3.0 ;
+        sh:maxInclusive 3.0 ;
+        sh:severity sh:Violation ;
+        sh:message "DIM-003 FAIL: {$value} mm violates Section4.4.1" ;
+    ] .
+
+# DIM-004: Bearing pad verticality deviation
+rmc:DIM-004-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBearing ;
+    sh:property [
+        sh:path rmc:verticalityDeviationDeg ;
+        sh:minInclusive -0.5 ;
+        sh:maxInclusive 0.5 ;
+        sh:severity sh:Violation ;
+        sh:message "DIM-004 FAIL: {$value} deg violates Section4.4.2" ;
+    ] .
+
+# DIM-005: Deck slab thickness deviation
+rmc:DIM-005-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcSlab ;
+    sh:property [
+        sh:path rmc:thicknessDeviationMm ;
+        sh:minInclusive -5.0 ;
+        sh:maxInclusive 5.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-005 FAIL: {$value} mm violates Section4.5.1" ;
+    ] .
+
+# DIM-006: Deck slab surface flatness (3 m straightedge)
+rmc:DIM-006-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcSlab ;
+    sh:property [
+        sh:path rmc:flatnessDeviationMm ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 5.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-006 FAIL: {$value} mm violates Section4.5.2" ;
+    ] .
+
+# DIM-007: Abutment cap elevation deviation
+rmc:DIM-007-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcWall ;
+    sh:property [
+        sh:path rmc:capElevationDeviationMm ;
+        sh:minInclusive -5.0 ;
+        sh:maxInclusive 5.0 ;
+        sh:severity sh:Violation ;
+        sh:message "DIM-007 FAIL: {$value} mm violates Section4.6.1" ;
+    ] .
+
+# DIM-008: Pier column verticality deviation
+rmc:DIM-008-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcColumn ;
+    sh:property [
+        sh:path rmc:verticalityDeviationPerMille ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 2.0 ;
+        sh:severity sh:Violation ;
+        sh:message "DIM-008 FAIL: {$value} perMille violates Section4.6.2" ;
+    ] .
+
+# DIM-009: Pier cap width deviation
+rmc:DIM-009-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcColumn ;
+    sh:property [
+        sh:path rmc:capWidthDeviationMm ;
+        sh:minInclusive -5.0 ;
+        sh:maxInclusive 5.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-009 FAIL: {$value} mm violates Section4.6.3" ;
+    ] .
+
+# DIM-010: Precast box culvert alignment deviation
+rmc:DIM-010-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcCovering ;
+    sh:property [
+        sh:path rmc:alignmentDeviationMm ;
+        sh:minInclusive -10.0 ;
+        sh:maxInclusive 10.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-010 FAIL: {$value} mm violates Section4.7.1" ;
+    ] .
+
+# DIM-011: Girder span length deviation
+rmc:DIM-011-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:spanLengthDeviationMm ;
+        sh:minInclusive -10.0 ;
+        sh:maxInclusive 10.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-011 FAIL: {$value} mm violates Section4.3.4" ;
+    ] .
+
+# DIM-012: Girder cross-section depth deviation
+rmc:DIM-012-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:sectionDepthDeviationMm ;
+        sh:minInclusive -5.0 ;
+        sh:maxInclusive 5.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-012 FAIL: {$value} mm violates Section4.3.5" ;
+    ] .
+
+# DIM-013: Girder cross-section width deviation
+rmc:DIM-013-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:sectionWidthDeviationMm ;
+        sh:minInclusive -5.0 ;
+        sh:maxInclusive 5.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-013 FAIL: {$value} mm violates Section4.3.6" ;
+    ] .
+
+# DIM-014: Diaphragm position deviation (longitudinal)
+rmc:DIM-014-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcMember ;
+    sh:property [
+        sh:path rmc:longitudinalPositionDeviationMm ;
+        sh:minInclusive -10.0 ;
+        sh:maxInclusive 10.0 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-014 FAIL: {$value} mm violates Section4.3.7" ;
+    ] .
+
+# DIM-015: Bearing centerline offset deviation
+rmc:DIM-015-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBearing ;
+    sh:property [
+        sh:path rmc:centerlineOffsetMm ;
+        sh:minInclusive -3.0 ;
+        sh:maxInclusive 3.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-015 FAIL: {$value} mm violates Section4.4.3" ;
+    ] .
+
+# DIM-016: Deck transverse cross-slope deviation
+rmc:DIM-016-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcSlab ;
+    sh:property [
+        sh:path rmc:crossSlopeDeviationPercent ;
+        sh:minInclusive -0.2 ;
+        sh:maxInclusive 0.2 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-016 FAIL: {$value} percent violates Section4.5.3" ;
+    ] .
+
+# DIM-017: Expansion joint gap deviation
+rmc:DIM-017-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBuildingElementProxy ;
+    sh:property [
+        sh:path rmc:gapWidthDeviationMm ;
+        sh:minInclusive -3.0 ;
+        sh:maxInclusive 3.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-017 FAIL: {$value} mm violates Section4.8.1" ;
+    ] .
+
+# DIM-018: Parapet wall alignment deviation
+rmc:DIM-018-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcWall ;
+    sh:property [
+        sh:path rmc:alignmentDeviationMm ;
+        sh:minInclusive -5.0 ;
+        sh:maxInclusive 5.0 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-018 FAIL: {$value} mm violates Section4.9.1" ;
+    ] .
+
+# DIM-019: Drainage pipe invert level deviation
+rmc:DIM-019-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcPipeSegment ;
+    sh:property [
+        sh:path rmc:invertLevelDeviationMm ;
+        sh:minInclusive -10.0 ;
+        sh:maxInclusive 10.0 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-019 FAIL: {$value} mm violates Section4.10.1" ;
+    ] .
+
+# DIM-020: Footing plan position deviation
+rmc:DIM-020-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcFooting ;
+    sh:property [
+        sh:path rmc:planPositionDeviationMm ;
+        sh:minInclusive -15.0 ;
+        sh:maxInclusive 15.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-020 FAIL: {$value} mm violates Section4.6.4" ;
+    ] .
+
+# DIM-021: Footing top elevation deviation
+rmc:DIM-021-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcFooting ;
+    sh:property [
+        sh:path rmc:topElevationDeviationMm ;
+        sh:minInclusive -10.0 ;
+        sh:maxInclusive 10.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-021 FAIL: {$value} mm violates Section4.6.5" ;
+    ] .
+
+# DIM-022: Pile cap top elevation deviation
+rmc:DIM-022-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcPile ;
+    sh:property [
+        sh:path rmc:capTopElevationDeviationMm ;
+        sh:minInclusive -10.0 ;
+        sh:maxInclusive 10.0 ;
+        sh:severity sh:Warning ;
+        sh:message "DIM-022 FAIL: {$value} mm violates Section4.6.6" ;
+    ] .
+
+# DIM-023: Precast segment end-face squareness
+rmc:DIM-023-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBeam ;
+    sh:property [
+        sh:path rmc:endFaceSquarenessDeviationMm ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 3.0 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-023 FAIL: {$value} mm violates Section4.3.8" ;
+    ] .
+
+# DIM-024: Wing wall batter deviation
+rmc:DIM-024-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcWall ;
+    sh:property [
+        sh:path rmc:batterDeviationPerMille ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 3.0 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-024 FAIL: {$value} perMille violates Section4.6.7" ;
+    ] .
+
+# DIM-025: Curb and gutter line deviation
+rmc:DIM-025-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcBuildingElementProxy ;
+    sh:property [
+        sh:path rmc:lineDeviationMm ;
+        sh:minInclusive -8.0 ;
+        sh:maxInclusive 8.0 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-025 FAIL: {$value} mm violates Section4.9.2" ;
+    ] .
+
+# DIM-026: Approach slab settlement deviation
+rmc:DIM-026-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcSlab ;
+    sh:property [
+        sh:path rmc:settlementDeviationMm ;
+        sh:minInclusive -10.0 ;
+        sh:maxInclusive 10.0 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-026 FAIL: {$value} mm violates Section4.11.1" ;
+    ] .
+
+# DIM-027: Noise barrier post plumb deviation
+rmc:DIM-027-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcColumn ;
+    sh:property [
+        sh:path rmc:plumbDeviationPerMetre ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 3.0 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-027 FAIL: {$value} mm/m violates Section4.12.1" ;
+    ] .
+
+# DIM-028: Pedestrian railing post spacing deviation
+rmc:DIM-028-Shape a sh:NodeShape ;
+    sh:targetClass ifc:IfcRailing ;
+    sh:property [
+        sh:path rmc:postSpacingDeviationMm ;
+        sh:minInclusive -15.0 ;
+        sh:maxInclusive 15.0 ;
+        sh:severity sh:Info ;
+        sh:message "DIM-028 FAIL: {$value} mm violates Section4.12.2" ;
+    ] .
