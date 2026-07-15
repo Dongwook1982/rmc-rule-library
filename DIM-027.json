@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "@vocab": "https://rmc.dl-enc.com/ontology#",
+    "ifc": "https://standards.buildingsmart.org/IFC/DEV/IFC4_3/",
+    "kds": "https://www.kcsc.re.kr/kds/24/14/21#",
+    "sh": "http://www.w3.org/ns/shacl#"
+  },
+  "@id": "rule:DIM-027",
+  "@type": "QualityRule",
+  "ruleId": "DIM-027",
+  "category": "DimensionalTolerance",
+  "description": "Noise barrier post plumb deviation",
+  "sourceClause": "kds:Section4.12.1",
+  "sourceStandard": "KDS 24 14 21 (MOLIT 2021)",
+  "severity": "Minor",
+  "targetClass": "ifc:IfcColumn",
+  "parameter": {
+    "property": "plumbDeviationPerMetre",
+    "minAllowable": 0.0,
+    "maxAllowable": 3.0,
+    "unit": "mm/m"
+  },
+  "validationMethod": "ICP-PointCloudComparison",
+  "executedBy": "shacl:DIM-027-Shape",
+  "status": "Active",
+  "reviewedBy": [
+    "SeniorEngineer-A",
+    "SeniorEngineer-B",
+    "QualityManager"
+  ],
+  "lastUpdated": "2025-06-01"
+}
