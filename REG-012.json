@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@vocab": "https://rmc.dl-enc.com/ontology#",
+    "ifc": "https://standards.buildingsmart.org/IFC/DEV/IFC4_3/",
+    "kds": "https://www.kcsc.re.kr/kds/24/14/21#",
+    "iso": "https://www.iso.org/standard/68078.html#",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "rule:REG-012",
+  "@type": "QualityRule",
+  "ruleId": "REG-012",
+  "category": "RegulatoryRequirement",
+  "description": "Each IfcBeam must be assigned to exactly one IfcBridgePart",
+  "sourceClause": "kds:KDS Section3.2",
+  "sourceStandard": "KDS 24 14 21 (MOLIT 2021)",
+  "severity": "Major",
+  "targetClass": "ifc:IfcBeam",
+  "parameter": {
+    "property": "containedInBridgePart"
+  },
+  "validationMethod": "SemanticCheck",
+  "executedBy": "shacl:REG-012-Shape",
+  "status": "Active",
+  "reviewedBy": [
+    "SeniorEngineer-A",
+    "SeniorEngineer-B",
+    "QualityManager"
+  ],
+  "lastUpdated": "2025-06-01"
+}

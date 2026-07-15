@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@vocab": "https://rmc.dl-enc.com/ontology#",
+    "ifc": "https://standards.buildingsmart.org/IFC/DEV/IFC4_3/",
+    "kds": "https://www.kcsc.re.kr/kds/24/14/21#",
+    "iso": "https://www.iso.org/standard/68078.html#",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "rule:REG-020",
+  "@type": "QualityRule",
+  "ruleId": "REG-020",
+  "category": "RegulatoryRequirement",
+  "description": "MVD compliance: IfcSlab must contain Pset_SlabCommon",
+  "sourceClause": "iso:ISO19650-1:Section5.2",
+  "sourceStandard": "ISO 19650-1:2018",
+  "severity": "Major",
+  "targetClass": "ifc:IfcSlab",
+  "parameter": {
+    "property": "hasPset_SlabCommon"
+  },
+  "validationMethod": "MVDValidation",
+  "executedBy": "shacl:REG-020-Shape",
+  "status": "Active",
+  "reviewedBy": [
+    "SeniorEngineer-A",
+    "SeniorEngineer-B",
+    "QualityManager"
+  ],
+  "lastUpdated": "2025-06-01"
+}

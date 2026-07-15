@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@vocab": "https://rmc.dl-enc.com/ontology#",
+    "ifc": "https://standards.buildingsmart.org/IFC/DEV/IFC4_3/",
+    "kds": "https://www.kcsc.re.kr/kds/24/14/21#",
+    "iso": "https://www.iso.org/standard/68078.html#",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "rule:REG-004",
+  "@type": "QualityRule",
+  "ruleId": "REG-004",
+  "category": "RegulatoryRequirement",
+  "description": "Element Description property must be non-empty",
+  "sourceClause": "kds:KDS Section3.1",
+  "sourceStandard": "KDS 24 14 21 (MOLIT 2021)",
+  "severity": "Minor",
+  "targetClass": "ifc:IfcElement",
+  "parameter": {
+    "property": "Description"
+  },
+  "validationMethod": "PropertySetValidation",
+  "executedBy": "shacl:REG-004-Shape",
+  "status": "Active",
+  "reviewedBy": [
+    "SeniorEngineer-A",
+    "SeniorEngineer-B",
+    "QualityManager"
+  ],
+  "lastUpdated": "2025-06-01"
+}
