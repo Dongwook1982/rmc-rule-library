@@ -1,0 +1,39 @@
+{
+  "@context": {
+    "@vocab": "https://rmc.dl-enc.com/ontology#",
+    "ifc": "https://standards.buildingsmart.org/IFC/DEV/IFC4_3/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@id": "element:G-PSC-0042",
+  "@type": "ifc:IfcBeam",
+  "GlobalId": "3kY9VqUZL4Gv8BmNxPtR1w",
+  "Name": "PSC-Girder-Span3-G4",
+  "Description": "Precast PSC I-girder, Span 3, Girder 4, Bridge B-07",
+  "Tag": "G-PSC-0042",
+  "ObjectType": "PSC_GIRDER_40M",
+  "Pset_BeamCommon": {
+    "Span": 40000,
+    "CrossSectionArea": 452600,
+    "IsExternal": true
+  },
+  "Pset_ConcreteElementGeneral": {
+    "StrengthClass": "C40/50",
+    "concreteCompressiveStrengthMPa": 42.5,
+    "concreteMixReference": "MIX-KDS-C40-2025-003",
+    "batchTestReportReference": "BATCH-2025-06-014-B"
+  },
+  "AsBuiltMeasurements": {
+    "horizontalDeviationMm": 3.8,
+    "verticalCamberMm": -2.1,
+    "spanLengthDeviationMm": 4.0,
+    "sectionDepthDeviationMm": -1.5,
+    "sectionWidthDeviationMm": 2.0,
+    "endFaceSquarenessDeviationMm": 1.2
+  },
+  "inspectionRecordReference": "INSP-YI-S4-2025-0614-G042",
+  "installationDate": "2025-06-14",
+  "surveyDate": "2025-06-15",
+  "TLSScanStation": "Station-07",
+  "ICPRegistrationRMSE_mm": 2.1,
+  "ComplianceStatus": "Compliant"
+}

@@ -1,0 +1,120 @@
+{
+  "reportId": "RMC-YI-S4-20250615-001",
+  "projectName": "Yangpyeong-Icheon Section 4 Expressway",
+  "validationDate": "2025-06-15",
+  "rmcVersion": "1.0.0",
+  "softwareStack": {
+    "python": "3.10",
+    "ifcOpenShell": "0.7.0",
+    "apacheJenaFuseki": "4.9",
+    "pySHACL": "0.23",
+    "open3D": "0.17"
+  },
+  "summary": {
+    "totalElementsChecked": 5247,
+    "totalRulesApplied": 68,
+    "totalViolations": 142,
+    "truePositives": 135,
+    "falsePositives": 7,
+    "falseNegatives": 14,
+    "recall_pct": 90.6,
+    "precision_pct": 95.1,
+    "f1Score_pct": 92.8,
+    "falseNegativeRate_pct": 9.4,
+    "processingTime_hours": 8.0,
+    "processingBreakdown": {
+      "TLS_noiseFiltering_h": 1.5,
+      "ICP_registration_h": 2.8,
+      "semanticSegmentation_h": 2.2,
+      "ruleExecution_h": 0.5,
+      "reportGeneration_h": 1.0
+    }
+  },
+  "violationsByCategory": {
+    "DimensionalTolerance": {
+      "count": 85,
+      "examples": [
+        {
+          "ruleId": "DIM-001",
+          "elementGuid": "3kY9VqUZL4Gv8BmNxPtR1w",
+          "elementName": "PSC-Girder-Span5-G7",
+          "measuredValue_mm": 6.8,
+          "tolerance_mm": 5.0,
+          "deviation_mm": 1.8,
+          "severity": "Critical",
+          "status": "Confirmed-TruePositive"
+        },
+        {
+          "ruleId": "DIM-003",
+          "elementGuid": "7pRmKzXQ2Hs5NwLbYtCv0j",
+          "elementName": "Bearing-B07-P3-R",
+          "measuredValue_mm": 4.2,
+          "tolerance_mm": 3.0,
+          "deviation_mm": 1.2,
+          "severity": "Critical",
+          "status": "Confirmed-TruePositive"
+        },
+        {
+          "ruleId": "DIM-001",
+          "elementGuid": "9aFgTdWP1Lr6MvKnZqBx4e",
+          "elementName": "PSC-Girder-Span8-G2",
+          "measuredValue_mm": 5.9,
+          "tolerance_mm": 5.0,
+          "deviation_mm": 0.9,
+          "severity": "Critical",
+          "status": "Confirmed-FalsePositive",
+          "note": "Borderline: within 2.1mm ICP RMSE; verified on-site as compliant"
+        }
+      ]
+    },
+    "MaterialCompliance": {
+      "count": 27,
+      "examples": [
+        {
+          "ruleId": "MAT-001",
+          "elementGuid": "2bNsJyUV8Kp4QwOcXrAm6f",
+          "elementName": "PSC-Girder-Span2-G1",
+          "measuredValue_MPa": 38.2,
+          "minimumRequired_MPa": 40.0,
+          "severity": "Critical",
+          "status": "Confirmed-TruePositive"
+        },
+        {
+          "ruleId": "MAT-005",
+          "elementGuid": "5hCuIlTV3Jn7RxPdYsEo9g",
+          "elementName": "Tendon-T07-Span4",
+          "measuredValue_ratio": 0.72,
+          "maximumAllowed_ratio": 0.75,
+          "severity": "Critical",
+          "status": "Confirmed-TruePositive"
+        }
+      ]
+    },
+    "DataCompleteness": {
+      "count": 30,
+      "examples": [
+        {
+          "ruleId": "REG-005",
+          "elementGuid": "4dMpHoSW6Iq8TyNaVkBl1c",
+          "elementName": "Bearing-B04-A1-L",
+          "missingProperty": "installationDate",
+          "severity": "Critical",
+          "status": "Confirmed-TruePositive"
+        },
+        {
+          "ruleId": "REG-006",
+          "elementGuid": "8eOrGjYX9Fp2UtMzWnCq5h",
+          "elementName": "PSC-Girder-Span9-G5",
+          "missingProperty": "inspectionRecordReference",
+          "severity": "Critical",
+          "status": "Confirmed-TruePositive"
+        }
+      ]
+    }
+  },
+  "falsePositiveDetail": {
+    "count": 7,
+    "commonCause": "Borderline geometric deviations within 1-2 mm of tolerance boundary, attributable to finite ICP registration RMSE of 2.1 mm",
+    "allConfirmedCompliantOnSiteReinspection": true
+  }
+}
